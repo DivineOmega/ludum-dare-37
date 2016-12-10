@@ -133,7 +133,7 @@ public class Grid {
 	public void setupButtons() {
 		charButtons.clear();
 		for (int i = 0; i < 9; i++) {
-			CharButton charButton = new CharButton();
+			CharButton charButton = new CharButton(charButtons);
 			charButtons.add(charButton);
 			
 			if (i==0) {

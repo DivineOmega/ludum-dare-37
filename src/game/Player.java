@@ -23,7 +23,7 @@ public class Player {
 	private int speed = 2;
 		
 	private Direction moveDir = null;
-	private boolean enterPressed = false;
+	private boolean actionButtonPressed = false;
 		
 	public void update(Grid grid)
 	{
@@ -84,7 +84,7 @@ public class Player {
 			
 			charButton.hoveredOver = true;
 			
-			if (enterPressed) {
+			if (actionButtonPressed) {
 								
 				if (charButton.correct) {
 					System.out.println("Success!");
@@ -123,7 +123,7 @@ public class Player {
 			moveDir = Direction.RIGHT;
 		}
 		
-		enterPressed = keysPressed.contains(KeyEvent.VK_ENTER);
+		actionButtonPressed = keysPressed.contains(KeyEvent.VK_SPACE);
 		
 	}
 

@@ -4,6 +4,7 @@ import game.GridObject;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class CharButton implements GridObject {
@@ -12,11 +13,29 @@ public class CharButton implements GridObject {
 	public boolean hoveredOver = false;
 	public boolean correct = false;
 	
-	public CharButton()
+	public CharButton(ArrayList<CharButton> existingCharButtons)
 	{
 		Random random = new Random();
 		
-		buttonChar = (char) (48 + random.nextInt(74));
+		boolean charInUse = false;		
+		
+		do {
+			
+			// Pick a random char
+			buttonChar = (char) (48 + random.nextInt(74));
+			
+			// Assume char is not in use
+			charInUse = false;
+			
+			// Check if it actually is in use already by an existing button
+			for (CharButton existingCharButton : existingCharButtons) {
+				if (existingCharButton.buttonChar==buttonChar) {
+					charInUse = true;
+				}
+			}
+			
+			// Repeat if this char is in use
+		} while (charInUse);
 	}
 		
 	public void update()
