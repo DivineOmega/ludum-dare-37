@@ -3,14 +3,67 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import enums.Direction;
 
 public class Player {
 	
 	public int x = 0;
 	public int y = 0;
 	
-	public void update()
+	private int speed = 2;
+		
+	private Direction moveDir = null;
+	
+	public void update(Grid grid)
 	{
+		if (moveDir!=null) {
+			switch(moveDir) {
+				case UP:
+					y -= speed;
+					break;
+				
+				case DOWN:
+					y += speed;
+					break;
+					
+				case LEFT:
+					x -= speed;
+					break;
+					
+				case RIGHT:
+					x += speed;
+					break;
+					
+				default:
+					break;
+					
+			}
+			moveDir = null;
+		}
+		
+		int leftBound = grid.xOffset + grid.padding;
+		int rightBound = grid.xOffset + ((grid.padding + grid.cellSize)*grid.width);
+		int upBound = grid.yOffset + grid.padding;
+		int downBound = grid.yOffset + ((grid.padding + grid.cellSize)*grid.height);
+		
+		while (x < leftBound) {
+			x++;
+		}
+		
+		while (x > rightBound - grid.cellSize) {
+			x--;
+		}
+		
+		while (y < upBound) {
+			y++;
+		}
+		
+		while (y > downBound - grid.cellSize) {
+			y--;
+		}
 		
 	}
 	
@@ -18,6 +71,23 @@ public class Player {
 	{
 		g2d.setColor(Color.lightGray);
 		g2d.fillRect(x, y, cellSize, cellSize);
+		
+		g2d.setColor(Color.black);
+		g2d.drawRect(x, y, cellSize, cellSize);
+	}
+
+	public void handleInput(ArrayList<Integer> keysPressed) {
+				
+		if (keysPressed.contains(KeyEvent.VK_UP)) {
+			moveDir = Direction.UP;
+		} else if (keysPressed.contains(KeyEvent.VK_DOWN)) {
+			moveDir = Direction.DOWN;
+		} else if (keysPressed.contains(KeyEvent.VK_LEFT)) {
+			moveDir = Direction.LEFT;
+		} else if (keysPressed.contains(KeyEvent.VK_RIGHT)) {
+			moveDir = Direction.RIGHT;
+		}
+		
 	}
 	
 }
