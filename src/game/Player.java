@@ -4,9 +4,11 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import enums.Direction;
+import game.gridObjects.CharButton;
 
 public class Player {
 	
@@ -65,6 +67,14 @@ public class Player {
 			y--;
 		}
 		
+		int centreX = (int) (x + (grid.cellSize*0.5));
+		int centreY = (int) (y + (grid.cellSize*0.5));
+		
+		GridObject closestGridObject = grid.getGridObjectAtPixelCoordinates(centreX, centreY);
+				
+		if (closestGridObject instanceof CharButton) {
+			((CharButton) closestGridObject).hoveredOver = true;
+		}
 	}
 	
 	public void render(Graphics2D g2d, int cellSize)

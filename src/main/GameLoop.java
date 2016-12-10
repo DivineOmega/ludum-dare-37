@@ -114,6 +114,9 @@ public class GameLoop {
 		
 		timer = 0;
 		
+		// Update grid
+		grid.update();
+		
 		// Update player
 		player.update(grid);
 		
