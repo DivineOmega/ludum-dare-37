@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Random;
 
 import main.GameLoop;
 
@@ -23,7 +24,7 @@ public class Player {
 		
 	private Direction moveDir = null;
 	private boolean enterPressed = false;
-	
+		
 	public void update(Grid grid)
 	{
 		if (moveDir!=null) {
@@ -90,6 +91,11 @@ public class Player {
 				} else {
 					System.out.println("Fail!");
 				}
+				
+				// Reset the game
+				grid.reset();
+				reposition(grid);
+				grid.setupButtons();
 			}
 		}
 	}
@@ -119,6 +125,12 @@ public class Player {
 		
 		enterPressed = keysPressed.contains(KeyEvent.VK_ENTER);
 		
+	}
+
+	public void reposition(Grid grid) {
+		Random random = new Random();
+		x = grid.xOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.width));
+		y = grid.yOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.height));
 	}
 	
 }

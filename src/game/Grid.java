@@ -5,12 +5,15 @@ import game.gridObjects.EmptyCell;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
 public class Grid {
 	
 	private GridObject[][] multi = null;
+	
+	private ArrayList<CharButton> charButtons = new ArrayList<CharButton>();
 	
 	public int width = 13;
 	public int height = 13;
@@ -23,6 +26,17 @@ public class Grid {
 		
 	public Grid()
 	{
+		init();
+		
+	}
+	
+	public void reset()
+	{
+		init();
+	}
+	
+	public void init()
+	{
 		multi = new GridObject[width][height];
 		
 		for (int x = 0; x < multi.length; x++) {
@@ -30,7 +44,6 @@ public class Grid {
 				multi[x][y] = new EmptyCell();
 			}
 		}
-		
 	}
 	
 	public void update()
@@ -115,6 +128,21 @@ public class Grid {
 		}
 		
 		return closestGridObject;
+	}
+
+	public void setupButtons() {
+		charButtons.clear();
+		for (int i = 0; i < 9; i++) {
+			CharButton charButton = new CharButton();
+			charButtons.add(charButton);
+			
+			if (i==0) {
+				charButton.correct = true;
+				System.out.println("Correct button is: "+charButton.buttonChar);
+			}
+			
+			placeCharButton(charButton);
+		}
 	}
 	
 }

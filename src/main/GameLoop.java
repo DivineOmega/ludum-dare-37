@@ -6,11 +6,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Random;
 
 import game.Grid;
 import game.Player;
-import game.gridObjects.CharButton;
 import gui.MainWindow;
 
 public class GameLoop {
@@ -25,7 +23,6 @@ public class GameLoop {
 	
 	private Grid grid = new Grid();
 	private Player player = new Player();
-	private ArrayList<CharButton> charButtons = new ArrayList<CharButton>();
 	
 	private ArrayList<Integer> keysPressed = new ArrayList<Integer>();
 
@@ -63,25 +60,14 @@ public class GameLoop {
 	
 	public void init()
 	{
-		Random random = new Random();
+		// Init grid
+		grid.init();
 		
 		// Reposition player
-		player.x = grid.xOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.width));
-		player.y = grid.yOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.height));
+		player.reposition(grid);
 		
 		// Set up buttons
-		charButtons.clear();
-		for (int i = 0; i < 9; i++) {
-			CharButton charButton = new CharButton();
-			charButtons.add(charButton);
-			
-			if (i==0) {
-				charButton.correct = true;
-				System.out.println("Correct button is: "+charButton.buttonChar);
-			}
-			
-			grid.placeCharButton(charButton);
-		}
+		grid.setupButtons();
 	}
 
 	public void start()
