@@ -1,11 +1,8 @@
 package gui;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
 
-public class MainWindow extends JFrame implements KeyListener, Runnable
+public class MainWindow extends JFrame implements Runnable
 {
 	public DrawPane drawPane;
 
@@ -18,23 +15,7 @@ public class MainWindow extends JFrame implements KeyListener, Runnable
 		setSize(800, 600);
 		setTitle("One Room (Ludum Dare 37)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		addKeyListener(this);
-	}
 	
-	public void keyPressed(KeyEvent e)
-	{
-	    
-	}
-
-	public void keyReleased(KeyEvent arg0) 
-	{
-		
-	}
-
-	public void keyTyped(KeyEvent arg0) 
-	{
-		
 	}
 
 	public void run()
