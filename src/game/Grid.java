@@ -1,8 +1,10 @@
 package game;
 
+import game.gridObjects.CharButton;
 import game.gridObjects.EmptyCell;
 
 import java.awt.Graphics2D;
+import java.util.Random;
 
 public class Grid {
 	
@@ -45,6 +47,34 @@ public class Grid {
 				multi[x][y].render(g2d, pixelX, pixelY, cellSize);
 			}
 		}
+	}
+	
+	private int[] getEmptyCoordinates()
+	{
+		Random random = new Random();
+		
+		int x = random.nextInt(width);
+		int y = random.nextInt(height);
+		
+		while(!(multi[x][y] instanceof EmptyCell)) {
+			x = random.nextInt(width);
+			y = random.nextInt(height);
+		}
+		
+		int[] coordinates = {x, y};
+		
+		return coordinates;
+		
+	}
+
+	public void placeCharButton(CharButton charButton) {
+		
+		int[] coordinates = getEmptyCoordinates();
+		
+		int x = coordinates[0];
+		int y = coordinates[1];
+		
+		multi[x][y] = charButton;
 	}
 	
 }
