@@ -15,6 +15,7 @@ public class MainWindow extends JFrame implements Runnable
 		setSize(800, 600);
 		setTitle("One Room (Ludum Dare 37)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 	
 	}
 
