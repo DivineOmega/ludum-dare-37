@@ -3,8 +3,10 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import game.Grid;
+import game.Player;
 import gui.MainWindow;
 
 public class GameLoop {
@@ -18,11 +20,22 @@ public class GameLoop {
 	private int framesPerSecond = 60;
 	
 	private Grid grid = new Grid();
+	private Player player = new Player();
 
 	public GameLoop(MainWindow mainWindow) {
 		
 		this.mainWindow = mainWindow;
 		
+		init();
+		
+	}
+	
+	public void init()
+	{
+		Random random = new Random();
+		
+		player.x = grid.xOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.width));
+		player.y = grid.yOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.height));
 	}
 
 	public void start()
@@ -82,6 +95,9 @@ public class GameLoop {
 		// Draw grid
 		grid.render(g2d);
 		
+		// Draw player
+		player.render(g2d, grid.cellSize);
+				
 		// Repaint with new render image
 		mainWindow.drawPane.image = image;
 		mainWindow.repaint();
