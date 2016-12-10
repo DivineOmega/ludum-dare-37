@@ -80,10 +80,12 @@ public class Player {
 	public void render(Graphics2D g2d, int cellSize)
 	{
 		g2d.setColor(Color.lightGray);
-		g2d.fillRect(x, y, cellSize, cellSize);
+		g2d.fillRect((int) (x + (cellSize*0.25)), (int) (y + (cellSize*0.25)), 
+				(int) (cellSize*0.5), (int) (cellSize*0.5));
 		
 		g2d.setColor(Color.black);
-		g2d.drawRect(x, y, cellSize, cellSize);
+		g2d.drawRect((int) (x + (cellSize*0.25)), (int) (y + (cellSize*0.25)), 
+				(int) (cellSize*0.5), (int) (cellSize*0.5));
 	}
 
 	public void handleInput(ArrayList<Integer> keysPressed) {
