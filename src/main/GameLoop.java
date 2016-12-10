@@ -74,6 +74,12 @@ public class GameLoop {
 		for (int i = 0; i < 9; i++) {
 			CharButton charButton = new CharButton();
 			charButtons.add(charButton);
+			
+			if (i==0) {
+				charButton.correct = true;
+				System.out.println("Correct button is: "+charButton.buttonChar);
+			}
+			
 			grid.placeCharButton(charButton);
 		}
 	}

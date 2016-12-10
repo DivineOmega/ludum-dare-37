@@ -8,8 +8,9 @@ import java.util.Random;
 
 public class CharButton implements GridObject {
 	
-	char buttonChar;
+	public char buttonChar;
 	public boolean hoveredOver = false;
+	public boolean correct = false;
 	
 	public CharButton()
 	{
@@ -32,7 +33,11 @@ public class CharButton implements GridObject {
 		}
 		g2d.fillRect(pixelX, pixelY, cellSize, cellSize);
 		
-		g2d.setColor(Color.white);
+		if (hoveredOver) {
+			g2d.setColor(Color.black);
+		} else {
+			g2d.setColor(Color.white);
+		}
 		g2d.drawString(Character.toString(buttonChar), (int) (pixelX+(cellSize*0.4)), (int) (pixelY+(cellSize*0.6)));
 	}
 	
