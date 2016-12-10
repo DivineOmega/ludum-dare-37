@@ -7,6 +7,10 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import main.GameLoop;
+
+import com.sun.corba.se.impl.encoding.OSFCodeSetRegistry.Entry;
+
 import enums.Direction;
 import game.gridObjects.CharButton;
 
@@ -18,6 +22,7 @@ public class Player {
 	private int speed = 2;
 		
 	private Direction moveDir = null;
+	private boolean enterPressed = false;
 	
 	public void update(Grid grid)
 	{
@@ -73,7 +78,19 @@ public class Player {
 		GridObject closestGridObject = grid.getGridObjectAtPixelCoordinates(centreX, centreY);
 				
 		if (closestGridObject instanceof CharButton) {
-			((CharButton) closestGridObject).hoveredOver = true;
+			
+			CharButton charButton = ((CharButton) closestGridObject);
+			
+			charButton.hoveredOver = true;
+			
+			if (enterPressed) {
+								
+				if (charButton.correct) {
+					System.out.println("Success!");
+				} else {
+					System.out.println("Fail!");
+				}
+			}
 		}
 	}
 	
@@ -99,6 +116,8 @@ public class Player {
 		} else if (keysPressed.contains(KeyEvent.VK_RIGHT)) {
 			moveDir = Direction.RIGHT;
 		}
+		
+		enterPressed = keysPressed.contains(KeyEvent.VK_ENTER);
 		
 	}
 	
