@@ -109,6 +109,7 @@ public class GameLoop {
 		timer = 0;
 		
 		if (Main.computerWindow.isVisible()) {
+			keysPressed.clear();
 			return;
 		}
 		
@@ -159,4 +160,5 @@ public class GameLoop {
 		mainWindow.repaint();
 
 	}
+	
 }

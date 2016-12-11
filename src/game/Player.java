@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import main.GameLoop;
+import main.Main;
 
 import com.sun.corba.se.impl.encoding.OSFCodeSetRegistry.Entry;
 
 import enums.Direction;
 import game.gridObjects.CharButton;
+import game.gridObjects.Computer;
 
 public class Player {
 	
@@ -97,6 +99,17 @@ public class Player {
 				reposition(grid);
 				grid.setupButtons();
 			}
+			
+		} else if (closestGridObject instanceof Computer) {
+			
+			Computer computer = ((Computer) closestGridObject);
+			
+			computer.hoveredOver = true;
+			
+			if (actionButtonPressed && !Main.computerWindow.isVisible()) {
+				Main.computerWindow.showWindow();
+			}
+			
 		}
 	}
 	

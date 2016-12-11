@@ -1,6 +1,7 @@
 package game;
 
 import game.gridObjects.CharButton;
+import game.gridObjects.Computer;
 import game.gridObjects.EmptyCell;
 
 import java.awt.Graphics2D;
@@ -47,6 +48,13 @@ public class Grid {
 				multi[x][y] = new EmptyCell();
 			}
 		}
+		
+		int[] computerCoordinates = getEmptyCoordinates();
+		
+		int computerX = computerCoordinates[0];
+		int computerY = computerCoordinates[1];
+		
+		multi[computerX][computerY] = new Computer();
 	}
 	
 	public void update()
@@ -150,5 +158,6 @@ public class Grid {
 		Main.ircConnection.setMyCorrectChar(charButtons.get(0).buttonChar);
 		
 	}
+	
 	
 }
