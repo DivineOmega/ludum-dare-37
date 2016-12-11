@@ -56,7 +56,7 @@ public class IrcConnection extends Thread {
 		
 			// Connect to server and join channel
 			if (!ircBot.isConnected()) {
-				Main.computerWindow.setStatus("Connecting to server...");
+				Main.computerWindow.setStatus("Connecting to server...<br>This may take a few moments.");
 				Main.computerWindow.clearChat();
 				ircBot.connect(ircServer);
 				ircBot.joinChannel(ircChannel);
@@ -65,19 +65,19 @@ public class IrcConnection extends Thread {
 			// Send match making requests
 			if (matchedUser==null) {
 				
-				
-				Main.computerWindow.setStatus("Finding partner...");
-				Main.computerWindow.clearChat();
-				
 				// If we're matchmaking, it's safe to assume the partnerCorrectChar is outdated, so reset it
 				partnerCorrectChar = 0;
 				
 				User[] users = ircBot.getUsers(ircChannel);
+				
+				Main.computerWindow.setStatus("Finding partner...<br>Player(s) online: "+(users.length));
+				Main.computerWindow.clearChat();
+				
 				Collections.shuffle(Arrays.asList(users));
 				for (User user : users) {
 					// Don't match make with yourself
 					if (user.getNick().equals(ircBot.getNick())) {
-						continue;
+						continue; 
 					}
 					
 					// Stop sending match making request if we're now matched
