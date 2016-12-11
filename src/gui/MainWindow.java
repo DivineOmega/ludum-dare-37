@@ -13,7 +13,7 @@ public class MainWindow extends JFrame implements Runnable
 		
 		setResizable(false);
 		setSize(800, 600);
-		setTitle("One Room (Ludum Dare 37)");
+		setTitle("Chat Room One");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 			
