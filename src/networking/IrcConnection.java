@@ -20,7 +20,8 @@ public class IrcConnection extends Thread {
 	
 	public String matchedUser = null;
 	
-	char partnerCorrectChar = 0;
+	private char myCorrectChar = 0;
+	private char partnerCorrectChar = 0;
 
 	private void setup()
 	{
@@ -98,10 +99,13 @@ public class IrcConnection extends Thread {
 				String statusString = "Partnered with "+matchedUser+". ";
 				
 				if (partnerCorrectChar!=0) {
-					statusString += "<br><br>";
+					statusString += "<br>";
+					statusString += "<br>";
 					statusString += "Your partner need to press the '"+partnerCorrectChar+"' button to escape.<br>";
 					statusString += "Describe this button to your partner to help them escape, <br>";
-					statusString += "but you can't use '"+partnerCorrectChar+"' in your messages. ";
+					statusString += "but you can't use '"+partnerCorrectChar+"' in your messages. <br>";
+					statusString += "<br>";
+					statusString += "Also, ask your partner what you need to do to escape.";
 				}
 					
 				Main.computerWindow.setStatus(statusString);
@@ -140,6 +144,26 @@ public class IrcConnection extends Thread {
 	
 	public void run() {
 		setup();
+	}
+
+	public void setMyCorrectChar(char buttonChar) {
+		myCorrectChar = buttonChar;
+		queueMessage("CORRECT_CHAR_BUTTON:"+myCorrectChar);
+		
+	}
+	
+	public void setPartnerCorrectChar(char buttonChar) {
+		partnerCorrectChar = buttonChar;
+	}
+	
+	public char getMyCorrectChar()
+	{
+		return myCorrectChar;
+	}
+	
+	public char getPartnerCorrectChar()
+	{
+		return partnerCorrectChar;
 	}
 
 }

@@ -147,7 +147,8 @@ public class Grid {
 			placeCharButton(charButton);
 		}
 		
-		Main.ircConnection.queueMessage("CORRECT_CHAR_BUTTON:"+charButtons.get(0).buttonChar);
+		Main.ircConnection.setMyCorrectChar(charButtons.get(0).buttonChar);
+		
 	}
 	
 }

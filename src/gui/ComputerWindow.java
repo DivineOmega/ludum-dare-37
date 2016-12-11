@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 
 import javax.swing.JButton;
@@ -46,10 +48,29 @@ public class ComputerWindow extends JFrame implements Runnable {
 		contentPane.add(textField, "flowx,cell 0 2,growx");
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Send");
-		contentPane.add(btnNewButton, "cell 0 2");
+		JButton btnSend = new JButton("Send");
+		contentPane.add(btnSend, "cell 0 2");
 
-		
+		btnSend.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				if (textField.getText().trim().isEmpty()) {
+					return;
+				}
+				
+				char partnerCorrectChar = Main.ircConnection.getPartnerCorrectChar();
+				
+				if (textField.getText().toUpperCase().contains(Character.toString(partnerCorrectChar).toUpperCase())) {
+					addToChat("You are not allowed to use '"+partnerCorrectChar+"' in your message.");
+					return;
+				}
+				
+				addToChat("You: "+textField.getText());
+				Main.ircConnection.queueMessage("CHAT:"+textField.getText());
+				textField.setText("");
+			}
+		});
 		
 	}
 

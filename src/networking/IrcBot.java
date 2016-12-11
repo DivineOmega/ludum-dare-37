@@ -1,5 +1,7 @@
 package networking;
 
+import gui.MainWindow;
+
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -71,8 +73,24 @@ public class IrcBot extends PircBot {
 				
 				System.out.println("Partner's correct button: "+partnerCorrectChar);
 				
-				Main.ircConnection.partnerCorrectChar = partnerCorrectChar;
+				Main.ircConnection.setPartnerCorrectChar(partnerCorrectChar);
 			}
+			// If they send us a chat message. add it to the computer chat log
+			else if (message.toUpperCase().startsWith("CHAT:")) {
+				
+				String[] messageParts = message.split(":");
+				
+				String chatMsg = messageParts[1];
+				
+				// Ignore chat messages that contain my character (these should not be sent) - helps prevent cheating!
+				char myCorrectChar = Main.ircConnection.getMyCorrectChar();
+				if (chatMsg.toUpperCase().contains(Character.toString(myCorrectChar).toUpperCase())) {
+					return;
+				}
+				
+				Main.computerWindow.addToChat(sender+": "+chatMsg);
+			}
+			// If they request we unmatch, do so.
 			else if (message.equalsIgnoreCase("UNMATCH")) {
 				
 				Main.ircConnection.matchedUser = null;
