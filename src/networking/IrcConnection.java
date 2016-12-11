@@ -148,8 +148,11 @@ public class IrcConnection extends Thread {
 
 	public void setMyCorrectChar(char buttonChar) {
 		myCorrectChar = buttonChar;
+		sendMyCorrectChar();		
+	}
+	
+	public void sendMyCorrectChar() {
 		queueMessage("CORRECT_CHAR_BUTTON:"+myCorrectChar);
-		
 	}
 	
 	public void setPartnerCorrectChar(char buttonChar) {

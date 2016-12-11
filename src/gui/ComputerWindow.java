@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import main.Main;
 import net.miginfocom.swing.MigLayout;
+import networking.IrcConnection;
 
 public class ComputerWindow extends JFrame implements Runnable {
 
@@ -53,6 +54,7 @@ public class ComputerWindow extends JFrame implements Runnable {
 		JButton btnSend = new JButton("Send");
 		contentPane.add(btnSend, "cell 0 2");
 		
+		
 		Action action = new AbstractAction()
 		{
 		    @Override
@@ -78,6 +80,20 @@ public class ComputerWindow extends JFrame implements Runnable {
 		btnSend.addActionListener(action);
 		textField.addActionListener(action);
 		
+		JLabel lblFindNewPartner = new JLabel("<html>If your partner does not seem to be responding, <br>click the button below to try to find a new partner.");
+		contentPane.add(lblFindNewPartner, "cell 0 3");
+		
+		JButton btnFindNewPartner = new JButton("Find new partner");
+		contentPane.add(btnFindNewPartner, "cell 0 4");
+		
+		btnFindNewPartner.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Main.ircConnection.matchedUser = null;
+				Main.ircConnection.sendMyCorrectChar();
+			}
+		});
 	}
 
 	@Override
