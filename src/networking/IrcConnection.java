@@ -27,7 +27,7 @@ public class IrcConnection extends Thread {
 	{
 		IrcBot ircBot = new IrcBot();
 		
-		ircBot.setVerbose(true);
+		ircBot.setVerbose(false);
 		
 		while(true) 
 		{
