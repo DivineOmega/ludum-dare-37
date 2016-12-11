@@ -28,7 +28,7 @@ public class ComputerWindow extends JFrame implements Runnable {
 		setBounds(100, 100, 500, 500);
 		setResizable(false);
 		setAlwaysOnTop(true);
-		setTitle("Computer - One Room (Ludum Dare 37)");
+		setTitle("Computer Chat - One Room (Ludum Dare 37)");
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

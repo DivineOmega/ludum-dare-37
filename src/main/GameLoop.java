@@ -143,7 +143,7 @@ public class GameLoop {
 		if (Main.computerWindow.isVisible()) {
 			
 			g2d.setColor(Color.white);
-			g2d.drawString("You must close the computer window to continue.", 240, 280);
+			g2d.drawString("You must close the computer chat window to continue.", 240, 280);
 			
 		} else {
 		
