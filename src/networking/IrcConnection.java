@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import main.Main;
+
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.NickAlreadyInUseException;
 import org.jibble.pircbot.User;
@@ -18,7 +20,7 @@ public class IrcConnection extends Thread {
 	
 	public String matchedUser = null;
 	
-	char partnerCorrectChar;
+	char partnerCorrectChar = 0;
 
 	private void setup()
 	{
@@ -53,12 +55,22 @@ public class IrcConnection extends Thread {
 		
 			// Connect to server and join channel
 			if (!ircBot.isConnected()) {
+				Main.computerWindow.setStatus("Connecting to server...");
+				Main.computerWindow.clearChat();
 				ircBot.connect(ircServer);
 				ircBot.joinChannel(ircChannel);
 			}
 			
 			// Send match making requests
 			if (matchedUser==null) {
+				
+				
+				Main.computerWindow.setStatus("Finding partner...");
+				Main.computerWindow.clearChat();
+				
+				// If we're matchmaking, it's safe to assume the partnerCorrectChar is outdated, so reset it
+				partnerCorrectChar = 0;
+				
 				User[] users = ircBot.getUsers(ircChannel);
 				Collections.shuffle(Arrays.asList(users));
 				for (User user : users) {
@@ -82,6 +94,17 @@ public class IrcConnection extends Thread {
 			
 			// If we're matched with a user
 			if (matchedUser!=null) {
+				
+				String statusString = "Partnered with "+matchedUser+". ";
+				
+				if (partnerCorrectChar!=0) {
+					statusString += "<br><br>";
+					statusString += "Your partner need to press the '"+partnerCorrectChar+"' button to escape.<br>";
+					statusString += "Describe this button to your partner to help them escape, <br>";
+					statusString += "but you can't use '"+partnerCorrectChar+"' in your messages. ";
+				}
+					
+				Main.computerWindow.setStatus(statusString);
 				
 				ArrayList<String> sentMessages = new ArrayList<String>();
 				

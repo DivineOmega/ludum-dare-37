@@ -16,7 +16,7 @@ public class MainWindow extends JFrame implements Runnable
 		setTitle("One Room (Ludum Dare 37)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-	
+			
 	}
 
 	public void run()
@@ -24,5 +24,6 @@ public class MainWindow extends JFrame implements Runnable
 		this.setVisible(true);
 		
 	}
+	
 	
 }
