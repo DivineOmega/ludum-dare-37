@@ -45,6 +45,8 @@ public class ComputerWindow extends JFrame implements Runnable {
 		
 		textArea = new JTextArea();
 		textArea.setEditable(false);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
 		contentPane.add(textArea, "cell 0 1,grow");
 		
 		textField = new JTextField();
