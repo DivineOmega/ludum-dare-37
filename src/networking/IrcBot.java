@@ -71,7 +71,7 @@ public class IrcBot extends PircBot {
 				
 				char partnerCorrectChar = messageParts[1].charAt(0);
 				
-				System.out.println("Partner's correct button: "+partnerCorrectChar);
+				//System.out.println("Partner's correct button: "+partnerCorrectChar);
 				
 				Main.ircConnection.setPartnerCorrectChar(partnerCorrectChar);
 			}

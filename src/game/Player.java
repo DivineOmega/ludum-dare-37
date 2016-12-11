@@ -93,10 +93,10 @@ public class Player {
 					if (Main.highScore<Main.score) {
 						Main.highScore = Main.score;
 					}
-					System.out.println("Success!");
+					//System.out.println("Success!");
 				} else {
 					Main.score = 0;
-					System.out.println("Fail!");
+					//System.out.println("Fail!");
 				}
 				
 				// Reset the game

@@ -149,7 +149,7 @@ public class Grid {
 			
 			if (i==0) {
 				charButton.correct = true;
-				System.out.println("Correct button is: "+charButton.buttonChar);
+				//System.out.println("Correct button is: "+charButton.buttonChar);
 			}
 			
 			placeCharButton(charButton);
