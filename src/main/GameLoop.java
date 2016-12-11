@@ -46,7 +46,9 @@ public class GameLoop {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				int index = keysPressed.indexOf(e.getKeyCode());
-				keysPressed.remove(index);
+				if (index <= keysPressed.size()-1) {
+					keysPressed.remove(index);
+				}
 			}
 			
 			@Override

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
+import main.Main;
+import networking.IrcConnection;
+
 public class Grid {
 	
 	private GridObject[][] multi = null;
@@ -143,6 +146,8 @@ public class Grid {
 			
 			placeCharButton(charButton);
 		}
+		
+		Main.ircConnection.queueMessage("CORRECT_CHAR_BUTTON:"+charButtons.get(0).buttonChar);
 	}
 	
 }
