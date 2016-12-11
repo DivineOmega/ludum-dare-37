@@ -153,6 +153,26 @@ public class GameLoop {
 			
 			// Draw player
 			player.render(g2d, grid.cellSize);
+			
+			// Draw scores
+			g2d.setColor(Color.white);
+			g2d.drawString("Score: "+Main.score, 575, 50);
+			g2d.drawString("High score: "+Main.highScore, 575, 75);
+			
+			// Draw instructions
+			g2d.drawString("Instructions:", 575, 180);
+			g2d.drawString("Only one of these buttons will", 575, 220);
+			g2d.drawString("let you escape this room.", 575, 240);
+			g2d.drawString("Use the computer to talk to", 575, 260);
+			g2d.drawString("another player and help each", 575, 280);
+			g2d.drawString("other escape.", 575, 300);
+			g2d.drawString("Escaping a room will give you", 575, 340);
+			g2d.drawString("1 point, but pressing the wrong", 575, 360);
+			g2d.drawString("button will reset your score", 575, 380);
+			g2d.drawString("to zero. Be careful!", 575, 400);
+			
+			g2d.drawString("Press SPACE to interact.", 575, 440);
+			g2d.drawString("Press ARROW KEYS to move.", 575, 460);
 		}
 				
 		// Repaint with new render image

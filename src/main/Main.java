@@ -14,6 +14,9 @@ public class Main {
 	
 	public static MainWindow mainWindow = new MainWindow();
 	public static ComputerWindow computerWindow = new ComputerWindow();
+	
+	public static int score = 0;
+	public static int highScore = 0;
 		
 	public static void main(String[] args)
 	{

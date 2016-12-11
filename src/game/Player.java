@@ -89,8 +89,13 @@ public class Player {
 			if (actionButtonPressed) {
 								
 				if (charButton.correct) {
+					Main.score++;
+					if (Main.highScore<Main.score) {
+						Main.highScore = Main.score;
+					}
 					System.out.println("Success!");
 				} else {
+					Main.score = 0;
 					System.out.println("Fail!");
 				}
 				
