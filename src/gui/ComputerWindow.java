@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,12 +52,13 @@ public class ComputerWindow extends JFrame implements Runnable {
 		
 		JButton btnSend = new JButton("Send");
 		contentPane.add(btnSend, "cell 0 2");
-
-		btnSend.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				if (textField.getText().trim().isEmpty()) {
+		
+		Action action = new AbstractAction()
+		{
+		    @Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+		    	if (textField.getText().trim().isEmpty()) {
 					return;
 				}
 				
@@ -69,8 +72,11 @@ public class ComputerWindow extends JFrame implements Runnable {
 				addToChat("You: "+textField.getText());
 				Main.ircConnection.queueMessage("CHAT:"+textField.getText());
 				textField.setText("");
-			}
-		});
+		    }
+		};
+
+		btnSend.addActionListener(action);
+		textField.addActionListener(action);
 		
 	}
 
