@@ -108,6 +108,10 @@ public class GameLoop {
 		
 		timer = 0;
 		
+		if (Main.computerWindow.isVisible()) {
+			return;
+		}
+		
 		// Update grid
 		grid.update();
 		
@@ -136,11 +140,19 @@ public class GameLoop {
 		g2d.setColor(Color.darkGray);
 		g2d.fillRect(0, 0, 800, 800);
 		
-		// Draw grid
-		grid.render(g2d);
+		if (Main.computerWindow.isVisible()) {
+			
+			g2d.setColor(Color.white);
+			g2d.drawString("You must close the computer window to continue.", 240, 280);
+			
+		} else {
 		
-		// Draw player
-		player.render(g2d, grid.cellSize);
+			// Draw grid
+			grid.render(g2d);
+			
+			// Draw player
+			player.render(g2d, grid.cellSize);
+		}
 				
 		// Repaint with new render image
 		mainWindow.drawPane.image = image;

@@ -31,7 +31,9 @@ public class Main {
 		
 		SwingUtilities.invokeLater(mainWindow);
 		SwingUtilities.invokeLater(computerWindow);
-				
+		
+		computerWindow.showWindow();
+		
 		ircConnection.start();
 		
 		GameLoop gameLoop = new GameLoop(mainWindow);
