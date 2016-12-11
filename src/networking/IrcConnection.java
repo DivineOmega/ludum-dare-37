@@ -101,7 +101,7 @@ public class IrcConnection extends Thread {
 				if (partnerCorrectChar!=0) {
 					statusString += "<br>";
 					statusString += "<br>";
-					statusString += "Your partner need to press the '"+partnerCorrectChar+"' button to escape.<br>";
+					statusString += "Your partner needs to press the '"+partnerCorrectChar+"' button to escape.<br>";
 					statusString += "Describe this button to your partner to help them escape, <br>";
 					statusString += "but you can't use '"+partnerCorrectChar+"' in your messages. <br>";
 					statusString += "<br>";
