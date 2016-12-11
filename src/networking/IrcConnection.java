@@ -2,6 +2,7 @@ package networking;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.jibble.pircbot.IrcException;
@@ -59,6 +60,7 @@ public class IrcConnection extends Thread {
 			// Send match making requests
 			if (matchedUser==null) {
 				User[] users = ircBot.getUsers(ircChannel);
+				Collections.shuffle(Arrays.asList(users));
 				for (User user : users) {
 					// Don't match make with yourself
 					if (user.getNick().equals(ircBot.getNick())) {
