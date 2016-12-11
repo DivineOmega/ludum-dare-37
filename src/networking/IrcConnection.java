@@ -67,6 +67,11 @@ public class IrcConnection extends Thread {
 						continue;
 					}
 					
+					// Stop sending match making request if we're now matched
+					if (matchedUser!=null) {
+						break;
+					}
+					
 					ircBot.sendMessage(user.getNick(), "MATCHED?");
 				}
 			}
