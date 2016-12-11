@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -24,6 +25,7 @@ public class ComputerWindow extends JFrame implements Runnable {
 	private JTextField textField;
 	private JTextArea textArea;
 	private JLabel label;
+	private JScrollPane sp;
 
 	/**
 	 * Create the frame.
@@ -47,7 +49,9 @@ public class ComputerWindow extends JFrame implements Runnable {
 		textArea.setEditable(false);
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);
-		contentPane.add(textArea, "cell 0 1,grow");
+		
+		sp = new JScrollPane(textArea);
+		contentPane.add(sp, "cell 0 1,grow");
 		
 		textField = new JTextField();
 		contentPane.add(textField, "flowx,cell 0 2,growx");
