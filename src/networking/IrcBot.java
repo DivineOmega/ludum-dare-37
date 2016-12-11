@@ -52,6 +52,10 @@ public class IrcBot extends PircBot {
 			if (Main.ircConnection.matchedUser == null) {
 				Main.ircConnection.matchedUser = sender;
 			}
+			// If we are already matched to a user other than the sender, tell them to unmatch from us.
+			else if (!Main.ircConnection.matchedUser.equals(sender)) {
+				sendMessage(sender, "UNMATCH");
+			}
 			
 		}
 		

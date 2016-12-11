@@ -72,7 +72,11 @@ public class IrcConnection extends Thread {
 						break;
 					}
 					
+					// Send match making request
 					ircBot.sendMessage(user.getNick(), "MATCHED?");
+					
+					// Wait a while before sending the next match making request
+					Thread.sleep(200);
 				}
 			}
 			
