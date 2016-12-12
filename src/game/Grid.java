@@ -83,7 +83,7 @@ public class Grid {
 		}
 	}
 	
-	private int[] getEmptyCoordinates()
+	public int[] getEmptyCoordinates()
 	{
 		Random random = new Random();
 		

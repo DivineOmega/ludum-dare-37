@@ -64,12 +64,12 @@ public class GameLoop {
 	{
 		// Init grid
 		grid.init();
+				
+		// Set up buttons
+		grid.setupButtons();
 		
 		// Reposition player
 		player.reposition(grid);
-		
-		// Set up buttons
-		grid.setupButtons();
 	}
 
 	public void start()

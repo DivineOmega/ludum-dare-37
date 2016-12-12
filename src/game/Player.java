@@ -101,8 +101,8 @@ public class Player {
 				
 				// Reset the game
 				grid.reset();
-				reposition(grid);
 				grid.setupButtons();
+				reposition(grid);
 			}
 			
 		} else if (closestGridObject instanceof Computer) {
@@ -146,9 +146,14 @@ public class Player {
 	}
 
 	public void reposition(Grid grid) {
-		Random random = new Random();
-		x = grid.xOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.width));
-		y = grid.yOffset + ((grid.padding+grid.cellSize)*random.nextInt(grid.height));
+		
+		int[] playerGridCoordinates = grid.getEmptyCoordinates();
+		
+		int playerGridX = playerGridCoordinates[0]; 
+		int playerGridY = playerGridCoordinates[1];
+		
+		x = grid.xOffset + ((grid.padding+grid.cellSize)*playerGridX);
+		y = grid.yOffset + ((grid.padding+grid.cellSize)*playerGridY);
 	}
 	
 }
