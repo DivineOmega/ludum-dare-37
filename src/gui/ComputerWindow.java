@@ -96,6 +96,8 @@ public class ComputerWindow extends JFrame implements Runnable {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				setStatus("Finding new partner...");
+				clearChat();
 				Main.ircConnection.matchedUser = null;
 				Main.ircConnection.sendMyCorrectChar();
 			}
